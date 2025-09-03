@@ -1,6 +1,10 @@
 "use strict"
 
+import { Board } from "./Board.js";
+import { Tile } from "./Tile.js";
+
 window.onload = () => {
+    
     var board = new Board();    
     board.addBoard();
 

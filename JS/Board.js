@@ -1,6 +1,6 @@
 "use strict"
 
-var Board = class {
+export class Board {
     constructor(){
         this.boardDiv = document.createElement("div");
         this.boardDiv.id = "board";

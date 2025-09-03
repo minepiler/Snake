@@ -1,6 +1,6 @@
 "use strict"
 
-var Tile = class {
+export class Tile{
     constructor(){
         this.tileDiv = document.createElement("div")
         this.tileDiv.className = "tile";
