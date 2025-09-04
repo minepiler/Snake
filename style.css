@@ -1,22 +1,23 @@
 body{
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin:                         0;
+    height:                         100vh;
+    display:                        flex;
+    align-items:                    center;
+    justify-content:                center;
 }
 
-#board{
-    display: flex;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    border: 1px solid black;
-    height: 593px;
-    width: 593px;
+#board 
+{
+    display:                        flex;
+    align-content:                  flex-start;
+    flex-wrap:                      wrap;
+    border:                         1px solid black;
+    height:                         593px;
+    width:                          593px;
 }
 
 .tile{
-    width: 37.5px;
-    height: 37.5px;
-    border: black 1px solid;
+    width:                          37.5px;
+    height:                         37.5px;
+    border:                         1px solid black;
 }
