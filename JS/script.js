@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 import { Board } from "./Board.js";
 import { Tile  } from "./Tile.js";
@@ -8,6 +8,10 @@ window.onload = () => {
     initializeBoard();
     initializeTiles();
     initializeSnake();
+
+    window.addEventListener("keydown", (e) => {
+        console.log(e.key);
+    });
 }
 
 function initializeBoard(){
@@ -30,13 +34,15 @@ function initializeSnake(){
     var snake = new Snake();
 
     for (let i = 0; i < snake.Length; i++){
-        tiles[46 + i].style.backgroundColor = "red";
+        tiles[snake.tailPosition + i].style.backgroundColor = "red";
+        tiles[snake.tailPosition + i].addEventListener("keypress", moveSnake);
     }
 
-    for (let i = 0; i < tiles.length; i++ ){
-        console.log(tiles[i]);
-    }
+    tiles[snake.headPosition].style.backgroundColor = "purple";
+}
 
+function moveSnake(){
+    console.log("")
 }
 
 

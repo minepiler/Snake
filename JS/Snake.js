@@ -1,7 +1,11 @@
+"use strict";
+
 export class Snake {
     constructor(){
-        this.Length = 3;
+        this.Length = 2;
         this.color = "red"
+        this.tailPosition = 46;
+        this.headPosition = this.tailPosition + this.Length;
     }
 
     addLength(){
