@@ -1,11 +1,17 @@
 "use strict";
+// add singleton for snake and board
 
 import { Board } from "./Board.js";
 import { Tile  } from "./Tile.js";
 import { Snake } from "./Snake.js";
 
+var turningPoint = Number;
 var tiles = Array;
 var snake = Object;
+var interval = Function;
+var lastPressedKey = String;
+
+var test = 1;
 
 window.onload = () => {
     initializeBoard();
@@ -13,11 +19,23 @@ window.onload = () => {
     initializeSnake();
 
     window.addEventListener("keydown", (e) => {
+
+        if (lastPressedKey == e.key) {return;} 
+        else {clearInterval(interval);}
+        
         switch (e.key) {
             case "ArrowRight" : 
-                setInterval(function(){moveSnake("ArrowRight")}, 750)
+                 turningPoint = snake.headPosition;
+                interval = setInterval(function(){moveSnake("ArrowRight")}, 750);
+            break;
+
+            case "ArrowDown" : 
+                turningPoint = snake.headPosition;
+                interval = setInterval(function(){moveSnake("ArrowDown")}, 750);
+            break;
         }
-        console.log(e.key);
+
+        lastPressedKey = e.key;
     });
 }
 
@@ -42,26 +60,65 @@ function initializeSnake(){
     snake = new Snake();
 
     for (let i = 0; i < snake.Length; i++){
-        tiles[snake.tailPosition + i].style.backgroundColor = "red";
-    }
-
-    tiles[snake.headPosition].style.backgroundColor = "purple";
-}
-
-function moveSnake(arrowKey){
-    tiles[snake.tailPosition].style.backgroundColor = "";
-    
-    snake.tailPosition += 1;
-    console.log(snake.headPosition += 1)
-
-    for (let i = 0; i < snake.Length; i++){
         tiles[snake.tailPosition + i].style.backgroundColor = "green";
     }
 
     tiles[snake.headPosition].style.backgroundColor = "purple";
 }
 
+function moveSnake(arrowKey){
+
+    switch(arrowKey){
+        case "ArrowRight" : 
+            tiles[snake.tailPosition].style.backgroundColor = "";
+
+            if (snake.tailPosition == turningPoint){
+                test = 1;
+            }
+        
+            snake.setHeadPosition(1);
+            snake.setTailPosition(test);
+
+            for (let i = 0; i < snake.Length; i++){
+                tiles[snake.headPosition - i].style.backgroundColor = "green";
+            }
+
+            tiles[snake.headPosition].style.backgroundColor = "purple";
+
+        break;
+
+        case "ArrowDown" : 
+            tiles[snake.tailPosition].style.backgroundColor = "";
+            snake.setHeadPosition(15);
+            
+            if (snake.tailPosition == turningPoint){
+                test = 15;
+            }
+
+            snake.setTailPosition(test);
+
+            console.log(snake.tailPosition)
+
+
+            for (let i = 0; i < snake.Length; i++){
+                tiles[snake.headPosition - (i * 15)].style.backgroundColor = "green";
+            }
+
+
+            tiles[snake.headPosition].style.backgroundColor = "purple";
+
+        break;
+
+    }
+   
+}
+
 
 
 // snake is array
 // up down difference of 15
+
+//change the direction of body using the turning point 
+//Linked List
+
+// optimize code

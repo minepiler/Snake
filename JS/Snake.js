@@ -11,4 +11,12 @@ export class Snake {
     addLength(){
         this.Length += 1;
     }
+
+    setTailPosition(num){
+        this.tailPosition += num;
+    }
+
+    setHeadPosition(num){
+        this.headPosition += num;
+    }
 }
